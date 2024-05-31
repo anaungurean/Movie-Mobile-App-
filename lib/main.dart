@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_project/screens/login_screen.dart';
-import 'package:mobile_project/screens/movie_screen.dart';
+import 'package:mobile_project/screens/home_screen.dart';
 import 'package:mobile_project/shared_preferences_helper.dart';
 
 void main() async {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: isLoggedIn ? MovieScreen() : LoginScreen(),
+      home: isLoggedIn ? HomeScreen () : LoginScreen(),
     );
   }
 }

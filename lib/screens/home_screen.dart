@@ -1,18 +1,22 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:mobile_project/models/actor.dart';
 import 'dart:math';
 import 'package:mobile_project/screens/movieProfile_screen.dart';
 import 'package:mobile_project/models/movie.dart';
+import 'package:mobile_project/screens/login_screen.dart';
+import 'package:mobile_project/screens/favorites_screen.dart';
 
-class MovieScreen extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
-  _MovieScreenState createState() => _MovieScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _MovieScreenState extends State<MovieScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   
   List<Movie> movies = [];
+  List <Actor> actors = [];
   List<Movie> randomMovies = [];
   List<Movie> recommendedMovies = [];
   List<Movie> newMovies = [];
@@ -32,6 +36,8 @@ class _MovieScreenState extends State<MovieScreen> {
     setState(() {
       movies =
           (data['movies'] as List).map((json) => Movie.fromJson(json)).toList();
+      actors =
+          (data['actors'] as List).map((json) => Actor.fromJson(json)).toList();
       randomMovies = getRandomMovies(3, movies);
       recommendedMovies = getRandomMovies(5, movies);
       newMovies = getRecentMovies(5, movies);
@@ -62,7 +68,7 @@ class _MovieScreenState extends State<MovieScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+        appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -77,6 +83,33 @@ class _MovieScreenState extends State<MovieScreen> {
           ],
         ),
         backgroundColor: Colors.teal[900],
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LoginScreen(),
+                ),
+              );
+  
+            },
+            icon: Icon(Icons.exit_to_app),
+            color: Colors.teal[50],
+          ),
+            IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FavoritesScreen( favoriteActors: actors, favoriteMovies: movies),
+                ),
+              );
+            },
+            icon: Icon(Icons.favorite_border),
+            color: Colors.teal[50],
+          ),
+        ],
       ),
       backgroundColor: Colors.teal[50],
       body: ListView(
@@ -121,7 +154,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MovieProfileScreen(movie: movie),
+                        builder: (context) => MovieProfileScreen(movie: movie, actors: actors),
                       ),
                     );
                   },

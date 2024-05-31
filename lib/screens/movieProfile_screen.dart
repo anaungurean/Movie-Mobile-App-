@@ -1,22 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_project/models/movie.dart';
+import 'package:mobile_project/database_helper.dart';
+import 'actorProfile_screen.dart';
+import 'package:mobile_project/models/actor.dart';
 
-class MovieProfileScreen extends StatelessWidget {
+class MovieProfileScreen extends StatefulWidget {
   final Movie movie;
+  final List<Actor> actors;
 
-  const MovieProfileScreen({required this.movie});
+    const MovieProfileScreen({
+    required this.movie,
+    required this.actors,
+  });
+
+  @override
+  _MovieProfileScreenState createState() => _MovieProfileScreenState();
+}
+
+class _MovieProfileScreenState extends State<MovieProfileScreen> {
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          movie.title,
+          widget.movie.title,
           style: TextStyle(color: Colors.teal[50]),
         ),
         backgroundColor: Colors.teal[900],
+        actions: [
+          IconButton(
+            onPressed: () async {
+              // Verifică dacă filmul este deja în lista de favorite sau nu
+              if (await DatabaseHelper().isFavoriteMovie(widget.movie.id)) {
+                // Adaugă filmul la lista de favorite
+                await DatabaseHelper().registerFavoriteMovie(widget.movie.id);
+                // Actualizează starea pentru a reflecta faptul că filmul este acum în lista de favorite
+                setState(() {
+                  isFavorite = true;
+                });
+              }
+            },
+            // Iconița pentru butonul de adăugare la favorite
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_outline,
+            ),
+            // Culoarea iconiței
+            color: isFavorite ? Colors.teal[50] : Colors.teal[50],
+          ),
+        ],
       ),
-        backgroundColor: Colors.teal[50],
+      backgroundColor: Colors.teal[50],
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +66,7 @@ class MovieProfileScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
                       image: AssetImage(
-                          'lib/assets/images/${movie.photoFilename}'),
+                          'lib/assets/images/${widget.movie.photoFilename}'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -45,7 +80,7 @@ class MovieProfileScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                color:Colors.teal[100],  
+                color: Colors.teal[100],
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -53,7 +88,7 @@ class MovieProfileScreen extends StatelessWidget {
                     children: <Widget>[
                       Center(
                         child: Text(
-                          movie.title,
+                          widget.movie.title,
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -66,7 +101,7 @@ class MovieProfileScreen extends StatelessWidget {
                           alignment: WrapAlignment.center, // Centrare butoane
                           spacing: 8,
                           runSpacing: 4,
-                          children: movie.genre.split(',').map((genre) {
+                          children: widget.movie.genre.split(',').map((genre) {
                             return ElevatedButton(
                               onPressed:
                                   () {}, // Aici poți adăuga logica pentru buton dacă este necesară
@@ -88,7 +123,7 @@ class MovieProfileScreen extends StatelessWidget {
                       SizedBox(height: 8),
                       Center(
                         child: Text(
-                          movie.plot,
+                          widget.movie.plot,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
@@ -106,7 +141,7 @@ class MovieProfileScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            movie.director,
+                            widget.movie.director,
                             style: TextStyle(fontSize: 18),
                           ),
                         ],
@@ -121,7 +156,7 @@ class MovieProfileScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            movie.releaseDate,
+                            widget.movie.releaseDate,
                             style: TextStyle(fontSize: 18),
                           ),
                         ],
@@ -134,32 +169,41 @@ class MovieProfileScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Wrap(
+                     Wrap(
                         spacing: 8,
-                        children: movie.actors.map((actor) {
-                          return Chip(
-                            label: Text(
-                              actor,
-                              style: TextStyle(
-                                fontSize:
-                                    14, // specifică dimensiunea fontului dorită
-                                fontWeight: FontWeight
-                                    .bold, // specifică grosimea fontului
-                                color:
-                                    Colors.teal[50], // specifică culoarea textului
+                        children: widget.movie.actors.map((actor) {
+                          return GestureDetector(
+                            onTap: () {
+                              // Navigare către pagina actorului când este apăsat Chip-ul
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ActorProfileScreen( actor: widget.actors.firstWhere((element) => element.name == actor),),
+                                ),
+                              );
+                            },
+                            child: Chip(
+                              label: Text(
+                                actor,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.teal[50],
+                                ),
                               ),
+                              labelStyle: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.teal[50],
+                              ),
+                              backgroundColor: Colors.teal[900],
                             ),
-                            labelStyle: TextStyle(
-                              // aici poți specifica stilul pentru etichetă
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.teal[50],
-                            ),
-                              backgroundColor: Colors
-                                .teal[900], // setează culoarea de fundal a chipului
                           );
                         }).toList(),
                       ),
+
+
                     ],
                   ),
                 ),

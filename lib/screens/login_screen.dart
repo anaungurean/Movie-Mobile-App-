@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_project/database_helper.dart';
 import 'package:mobile_project/shared_preferences_helper.dart';
-import 'package:mobile_project/screens/movie_screen.dart';
+import 'package:mobile_project/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
       await SharedPreferencesHelper.saveUserLoggedIn(true);
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => MovieScreen()),
+        MaterialPageRoute(builder: (context) => HomeScreen()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(

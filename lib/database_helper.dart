@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'shared_preferences_helper.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
@@ -84,4 +85,84 @@ class DatabaseHelper {
     }
     return null;
   }
+
+  Future<int> registerFavoriteMovie(int movieId) async {
+    final userId = await SharedPreferencesHelper.getUserId();
+    if (userId == null) return 0;
+
+    Database db = await database;
+    return await db
+        .insert('favorite_movies', {'userId': userId, 'movieId': movieId});
+  }
+
+  Future<int> registerFavoriteActor(int actorId) async {
+    final userId = await SharedPreferencesHelper.getUserId();
+    if (userId == null) return 0;
+
+    Database db = await database;
+    return await db
+        .insert('favorite_actors', {'userId': userId, 'actorId': actorId});
+  }
+
+  Future<bool> isFavoriteMovie(int movieId) async {
+    final userId = await SharedPreferencesHelper.getUserId();
+    if (userId == null) return false;
+
+    Database db = await database;
+    List<Map<String, dynamic>> result = await db.query(
+      'favorite_movies',
+      where: 'userId = ? AND movieId = ?',
+      whereArgs: [userId, movieId],
+    );
+    return result.isNotEmpty;
+  }
+
+  Future<bool> isFavoriteActor(int actorId) async {
+    final userId = await SharedPreferencesHelper.getUserId();
+    if (userId == null) return false;
+
+    Database db = await database;
+    List<Map<String, dynamic>> result = await db.query(
+      'favorite_actors',
+      where: 'userId = ? AND actorId = ?',
+      whereArgs: [userId, actorId],
+    );
+    return result.isNotEmpty;
+  }
+
+  Future<List<int>> getFavoriteMovies() async {
+    final userId = await SharedPreferencesHelper.getUserId();
+    if (userId == null) return [];
+
+    Database db = await database;
+    List<Map<String, dynamic>> result = await db.query(
+      'favorite_movies',
+      where: 'userId = ?',
+      whereArgs: [userId],
+    );
+
+    // Ensure the list is of type List<int>
+    return result.map((e) => e['movieId'] as int).toList();
+  }
+
+  Future<List<int>> getFavoriteActors() async {
+    final userId = await SharedPreferencesHelper.getUserId();
+    if (userId == null) return [];
+
+    Database db = await database;
+    List<Map<String, dynamic>> result = await db.query(
+      'favorite_actors',
+      where: 'userId = ?',
+      whereArgs: [userId],
+    );
+
+    // Ensure the list is of type List<int>
+    return result.map((e) => e['actorId'] as int).toList();
+  }
+  
+  Future<List<Map<String, dynamic>>> query(String table, {String? where}) async {
+    Database db = await database;
+    return db.query(table, where: where);
+  }
 }
+

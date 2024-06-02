@@ -30,7 +30,6 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
             onPressed: () => {
               if (!isFavorite)
                 {
-                  DatabaseHelper().registerFavoriteActor(widget.actor.id),
                   setState(() {
                     isFavorite = true;
                   }),
@@ -39,7 +38,6 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
             icon: Icon(
               isFavorite ? Icons.favorite : Icons.favorite_outline,
             ),
-            // Culoarea iconiței
             color: isFavorite ? Colors.teal[50] : Colors.teal[50],
           ),
         ],

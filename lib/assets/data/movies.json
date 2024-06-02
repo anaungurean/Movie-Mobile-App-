@@ -7,7 +7,7 @@
       "releaseDate": "1997-12-19",
       "genre": "Drama, Romance",
       "director": "James Cameron",
-      "photoFilename": "Titanic.jpg",
+      "photoFilename": "1.jpg",
       "actors": ["Leonardo DiCaprio", "Kate Winslet"]
     },
     {
@@ -17,7 +17,7 @@
       "releaseDate": "1972-03-24",
       "genre": "Crime, Drama",
       "director": "Francis Ford Coppola",
-      "photoFilename": "Titanic.jpg",
+      "photoFilename": "2.jpg",
       "actors": ["Marlon Brando", "Al Pacino"]
     },
     {
@@ -27,7 +27,7 @@
       "releaseDate": "2010-07-16",
       "genre": "Action, Sci-Fi",
       "director": "Christopher Nolan",
-      "photoFilename": "Titanic.jpg",
+      "photoFilename": "3.jpeg",
       "actors": ["Leonardo DiCaprio", "Joseph Gordon-Levitt"]
     },
     {
@@ -37,7 +37,7 @@
       "releaseDate": "2008-07-18",
       "genre": "Action, Crime, Drama",
       "director": "Christopher Nolan",
-      "photoFilename": "Titanic.jpg",
+      "photoFilename": "4.jpg",
       "actors": ["Christian Bale", "Heath Ledger"]
     },
     {
@@ -47,7 +47,7 @@
       "releaseDate": "1994-10-14",
       "genre": "Crime, Drama",
       "director": "Quentin Tarantino",
-      "photoFilename": "Titanic.jpg",
+      "photoFilename": "5.jpg",
       "actors": ["John Travolta", "Uma Thurman"]
     },
     {
@@ -57,7 +57,7 @@
       "releaseDate": "1994-09-23",
       "genre": "Drama",
       "director": "Frank Darabont",
-      "photoFilename": "Titanic.jpg",
+      "photoFilename": "6.jpg",
       "actors": ["Tim Robbins", "Morgan Freeman"]
     },
     {
@@ -67,7 +67,7 @@
       "releaseDate": "1994-07-06",
       "genre": "Drama, Romance",
       "director": "Robert Zemeckis",
-      "photoFilename": "Titanic.jpg",
+      "photoFilename": "7.jpg",
       "actors": ["Tom Hanks", "Robin Wright"]
     },
     {
@@ -77,7 +77,7 @@
       "releaseDate": "1999-03-31",
       "genre": "Action, Sci-Fi",
       "director": "Lana Wachowski, Lilly Wachowski",
-      "photoFilename": "Titanic.jpg",
+      "photoFilename": "8.jpg",
       "actors": ["Keanu Reeves", "Laurence Fishburne"]
     },
     {
@@ -87,7 +87,7 @@
       "releaseDate": "1999-10-15",
       "genre": "Drama",
       "director": "David Fincher",
-      "photoFilename": "Titanic.jpg",
+      "photoFilename": "9.jpg",
       "actors": ["Brad Pitt", "Edward Norton"]
     },
     {
@@ -97,7 +97,7 @@
       "releaseDate": "2000-05-05",
       "genre": "Action, Drama",
       "director": "Ridley Scott",
-      "photoFilename": "Titanic.jpg",
+      "photoFilename": "10.jpg",
       "actors": ["Russell Crowe", "Joaquin Phoenix"]
     }
   ],
@@ -107,133 +107,133 @@
       "name": "Leonardo DiCaprio",
       "biography": "Leonardo Wilhelm DiCaprio is an American actor, film producer, and environmentalist.",
       "dateOfBirth": "1974-11-11",
-      "photoFilename": "Titanic.jpg"
+      "photoFilename": "11.jpg"
     },
     {
       "id": 2,
       "name": "Kate Winslet",
       "biography": "Kate Elizabeth Winslet is an English actress.",
       "dateOfBirth": "1975-10-05",
-      "photoFilename": "Titanic.jpg"
+      "photoFilename": "12.jpg"
     },
     {
       "id": 3,
       "name": "Marlon Brando",
       "biography": "Marlon Brando Jr. was an American actor and film director.",
       "dateOfBirth": "1924-04-03",
-      "photoFilename": "Titanic.jpg"
+      "photoFilename": "13.jpg"
     },
     {
       "id": 4,
       "name": "Al Pacino",
       "biography": "Alfredo James Pacino is an American actor and filmmaker.",
       "dateOfBirth": "1940-04-25",
-      "photoFilename": "Titanic.jpg"
+      "photoFilename": "14.jpg"
     },
     {
       "id": 5,
       "name": "Joseph Gordon-Levitt",
       "biography": "Joseph Leonard Gordon-Levitt is an American actor, filmmaker, and entrepreneur.",
       "dateOfBirth": "1981-02-17",
-      "photoFilename": "https://www.example.com/joseph_gordon-levitt.jpg"
+      "photoFilename": "15.jpg"
     },
     {
       "id": 6,
       "name": "Christian Bale",
       "biography": "Christian Charles Philip Bale is an English actor.",
       "dateOfBirth": "1974-01-30",
-      "photoFilename": "https://www.example.com/christian_bale.jpg"
+      "photoFilename": "16.jpg"
     },
     {
       "id": 7,
       "name": "Heath Ledger",
       "biography": "Heath Andrew Ledger was an Australian actor and music video director.",
       "dateOfBirth": "1979-04-04",
-      "photoFilename": "https://www.example.com/heath_ledger.jpg"
+      "photoFilename": "17.jpg"
     },
     {
       "id": 8,
       "name": "John Travolta",
       "biography": "John Joseph Travolta is an American actor and singer.",
       "dateOfBirth": "1954-02-18",
-      "photoFilename": "https://www.example.com/john_travolta.jpg"
+      "photoFilename": "18.jpg"
     },
     {
       "id": 9,
       "name": "Uma Thurman",
       "biography": "Uma Karuna Thurman is an American actress and model.",
       "dateOfBirth": "1970-04-29",
-      "photoFilename": "https://www.example.com/uma_thurman.jpg"
+      "photoFilename": "19.jpg"
     },
     {
       "id": 10,
       "name": "Tim Robbins",
       "biography": "Timothy Francis Robbins is an American actor, screenwriter, director, producer, and musician.",
       "dateOfBirth": "1958-10-16",
-      "photoFilename": "https://www.example.com/tim_robbins.jpg"
+      "photoFilename": "20.jpg"
     },
     {
       "id": 11,
       "name": "Morgan Freeman",
       "biography": "Morgan Freeman is an American actor, film director, and narrator.",
       "dateOfBirth": "1937-06-01",
-      "photoFilename": "https://www.example.com/morgan_freeman.jpg"
+      "photoFilename": "21.jpg"
     },
     {
       "id": 12,
       "name": "Tom Hanks",
       "biography": "Thomas Jeffrey Hanks is an American actor and filmmaker.",
       "dateOfBirth": "1956-07-09",
-      "photoFilename": "https://www.example.com/tom_hanks.jpg"
+      "photoFilename": "22.jpg"
     },
     {
       "id": 13,
       "name": "Robin Wright",
       "biography": "Robin Gayle Wright is an American actress and director.",
       "dateOfBirth": "1966-04-08",
-      "photoFilename": "https://www.example.com/robin_wright.jpg"
+      "photoFilename": "23.jpg"
     },
     {
       "id": 14,
       "name": "Keanu Reeves",
       "biography": "Keanu Charles Reeves is a Canadian actor.",
       "dateOfBirth": "1964-09-02",
-      "photoFilename": "https://www.example.com/keanu_reeves.jpg"
+      "photoFilename": "24.jpg"
     },
     {
       "id": 15,
       "name": "Laurence Fishburne",
       "biography": "Laurence John Fishburne III is an American actor, playwright, producer, screenwriter, and film director.",
       "dateOfBirth": "1961-07-30",
-      "photoFilename": "https://www.example.com/laurence_fishburne.jpg"
+      "photoFilename": "25.jpg"
     },
     {
       "id": 16,
       "name": "Brad Pitt",
       "biography": "William Bradley Pitt is an American actor and film producer.",
       "dateOfBirth": "1963-12-18",
-      "photoFilename": "https://www.example.com/brad_pitt.jpg"
+      "photoFilename": "26.jpg"
     },
     {
       "id": 17,
       "name": "Edward Norton",
       "biography": "Edward Harrison Norton is an American actor and filmmaker.",
       "dateOfBirth": "1969-08-18",
-      "photoFilename": "https://www.example.com/edward_norton.jpg"
+      "photoFilename": "27.jpg"
     },
     {
       "id": 18,
       "name": "Russell Crowe",
       "biography": "Russell Ira Crowe is an actor, film producer, and musician.",
       "dateOfBirth": "1964-04-07",
-      "photoFilename": "https://www.example.com/russell_crowe.jpg"
+      "photoFilename": "28.jpg"
     },
     {
       "id": 19,
       "name": "Joaquin Phoenix",
       "biography": "Joaquin Rafael Phoenix is an American actor, producer, and activist.",
       "dateOfBirth": "1974-10-28",
-      "photoFilename": "https://www.example.com/joaquin_phoenix.jpg"
+      "photoFilename": "29.jpg"
     }
   ]
 }

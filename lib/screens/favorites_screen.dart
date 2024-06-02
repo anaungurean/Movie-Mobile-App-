@@ -63,6 +63,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           },
         ),
       ),
+      backgroundColor: Colors.teal[50],
 
       body: ListView(
         children: [
@@ -81,7 +82,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal[900]),
           ),
           SizedBox(height: 8),
           SingleChildScrollView(

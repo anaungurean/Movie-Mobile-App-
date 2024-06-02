@@ -3,12 +3,13 @@ import 'package:mobile_project/models/movie.dart';
 import 'package:mobile_project/database_helper.dart';
 import 'actorProfile_screen.dart';
 import 'package:mobile_project/models/actor.dart';
+import 'dart:math'; // Add this import for generating random numbers
 
 class MovieProfileScreen extends StatefulWidget {
   final Movie movie;
   final List<Actor> actors;
 
-    const MovieProfileScreen({
+  const MovieProfileScreen({
     required this.movie,
     required this.actors,
   });
@@ -19,6 +20,14 @@ class MovieProfileScreen extends StatefulWidget {
 
 class _MovieProfileScreenState extends State<MovieProfileScreen> {
   bool isFavorite = false;
+  late int rating; // Declare a variable to hold the random rating
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the rating with a random value between 3 and 5
+    rating = 3 + Random().nextInt(3);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,20 +38,16 @@ class _MovieProfileScreenState extends State<MovieProfileScreen> {
           style: TextStyle(color: Colors.teal[50]),
         ),
         backgroundColor: Colors.teal[900],
-        actions: [
+          actions: [
           IconButton(
-            onPressed: () async {
-              // Verifică dacă filmul este deja în lista de favorite sau nu
-              if (await DatabaseHelper().isFavoriteMovie(widget.movie.id)) {
-                // Adaugă filmul la lista de favorite
-                await DatabaseHelper().registerFavoriteMovie(widget.movie.id);
-                // Actualizează starea pentru a reflecta faptul că filmul este acum în lista de favorite
-                setState(() {
-                  isFavorite = true;
-                });
-              }
+            onPressed: () => {
+              if (!isFavorite)
+                {
+                  setState(() {
+                    isFavorite = true;
+                  }),
+                }
             },
-            // Iconița pentru butonul de adăugare la favorite
             icon: Icon(
               isFavorite ? Icons.favorite : Icons.favorite_outline,
             ),
@@ -59,17 +64,35 @@ class _MovieProfileScreenState extends State<MovieProfileScreen> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Center(
-                child: Container(
-                  width: 200,
-                  height: 300,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                      image: AssetImage(
-                          'lib/assets/images/${widget.movie.photoFilename}'),
-                      fit: BoxFit.cover,
+                child: Column(
+                  // Wrap the Container in a Column
+                  children: [
+                    Container(
+                      width: 200,
+                      height: 300,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        image: DecorationImage(
+                          image: AssetImage(
+                              'lib/assets/images/${widget.movie.photoFilename}'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                  ),
+                    SizedBox(
+                        height:
+                            8), // Add spacing between the image and the rating
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(rating, (index) {
+                        return Icon(
+                          Icons.star,
+                          color: Colors.teal[900],
+                          size: 30.0,
+                        );
+                      }),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -169,7 +192,7 @@ class _MovieProfileScreenState extends State<MovieProfileScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                     Wrap(
+                      Wrap(
                         spacing: 8,
                         children: widget.movie.actors.map((actor) {
                           return GestureDetector(
@@ -178,8 +201,9 @@ class _MovieProfileScreenState extends State<MovieProfileScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      ActorProfileScreen( actor: widget.actors.firstWhere((element) => element.name == actor),),
+                                  builder: (context) => ActorProfileScreen(
+                                      actor: widget.actors.firstWhere(
+                                          (element) => element.name == actor)),
                                 ),
                               );
                             },
@@ -202,8 +226,6 @@ class _MovieProfileScreenState extends State<MovieProfileScreen> {
                           );
                         }).toList(),
                       ),
-
-
                     ],
                   ),
                 ),

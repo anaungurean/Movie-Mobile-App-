@@ -3,7 +3,7 @@
 ## Overview
 The Movie App is a mobile application that allows users to browse through a vast collection of movies. For each movie, users can view detailed information about the plot, actors, and producers. Additionally, users can create and manage their own lists of favorite actors and movies. The app also features a categorization system where movies can be grouped by genre for easier browsing.
 
-This project was developed using Dart and Flutter as part of the "Tehnici de programare pe platforme mobile" course during the final year of university.
+This project was developed using Dart and Flutter as part of the "Programming techniques on mobile platforms" course during the final year of university.
 
 ## Features
 - **Movie Browsing**: Explore a wide range of movies.
@@ -29,38 +29,6 @@ To get started with the Movie App, follow these steps:
    \`\`\`sh
    flutter run
    \`\`\`
-
-## Project Structure
-The project is organized as follows:
-\`\`\`
-movie-app/
-├── lib/
-│   ├── main.dart
-│   ├── screens/
-│   │   ├── home_screen.dart
-│   │   ├── movie_details_screen.dart
-│   │   ├── favorites_screen.dart
-│   │   └── genre_screen.dart
-│   ├── models/
-│   │   ├── movie.dart
-│   │   ├── actor.dart
-│   │   └── genre.dart
-│   ├── services/
-│   │   ├── movie_service.dart
-│   │   ├── actor_service.dart
-│   │   └── genre_service.dart
-│   ├── widgets/
-│   │   ├── movie_card.dart
-│   │   ├── actor_card.dart
-│   │   └── genre_chip.dart
-│   └── utils/
-│       ├── constants.dart
-│       └── helpers.dart
-├── test/
-│   ├── widget_test.dart
-├── pubspec.yaml
-└── README.md
-\`\`\`
 
 ## Dependencies
 - Flutter SDK

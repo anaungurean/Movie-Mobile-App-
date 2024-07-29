@@ -36,6 +36,10 @@ To get started with the Movie App, follow these steps:
 
 Refer to \`pubspec.yaml\` for a full list of dependencies.
 
+https://github.com/user-attachments/assets/384275bd-1b12-4b23-b63c-d1d82f152611
+
+
+
 ## How to Use
 1. **Browse Movies**: Launch the app and navigate through the collection of movies on the home screen.
 2. **View Details**: Tap on any movie to see detailed information about it.

@@ -16,7 +16,7 @@ To get started with the Movie App, follow these steps:
 
 1. **Clone the repository**:
    \`\`\`sh
-   git clone https://github.com/anaungurean/movie-app.git
+   git clone [https://github.com/anaungurean/movie-app.git](https://github.com/anaungurean/Movie-Mobile-App-)
    cd movie-app
    \`\`\`
 
